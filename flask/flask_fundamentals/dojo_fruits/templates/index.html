@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+
+            <h3>Dojo Fruits Store</h3>
+
+            <P>WHAT WOUDLD YOU LIKE TO BUY</P>
+            <table class="table table-striped w-auto">
+                <thead>
+                    <tr>
+                        <th>Fruits name</th>
+                        <th>Quantity</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Strawberry:</td>
+                        <td><input type="number" name="quantity" min="1" max="50"> </td>
+                    </tr>
+                    <tr>
+                        <td>Appple:</td>
+                        <td><input type="number" name="quantity" min="1" max="50"> </td>
+                    </tr>
+                    <tr>
+                        <td>Banana:</td> 
+                        <td><input type="number" name="quantity" min="1" max="50"> </td>
+                    </tr>
+                
+                
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+            <form action='/process' method='post'>
+                <p>Name: <input type='text' name='name'></p>
+                <p>Please select your gender:</p>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="other"> Other
+                <p>Dojo location :
+                    <select name="cities">
+                        <option value="newyork">New york</option>
+                        <option value="San Franscisco">San franscisco</option>
+                        <option value="Los Angeles">LA</option>
+                        <option value="San Hose">san hose</option>
+                    </select></p>
+                <p>Favorite Language:
+                        <select name="Language">
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="Javascript">Javascript</option>
+                        </select>
+                    
+                </p>
+                <p>Mention your favorite hobies:
+                        <input type="checkbox" name="hobies" value="sleeping" checked> I love sleeping
+                        <input type="checkbox" name="hobies" value="shopping" checked> I love shopping
+                        <input type="checkbox" name="hobies" value="travelling" checked> I love travelling sometime
+
+
+                </p>
+                <p> Comment(optional):
+                    <textarea name="folks_comments"></textarea>
+
+                </p>
+
+                <input type='submit' value='create user'>
+            </form>
+    </body>
+</html>
