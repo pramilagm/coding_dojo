@@ -1,11 +1,19 @@
-table,tr,td{
+table tr td{
     height: 50px;
     width: 50px;
+    border: 1px solid black;
 }
 .color1{
-    color: blue;
+    background-color: blue;
+    /* height: 100px;
+    width: 100px; */
 
 }
 .color2{
-    color: blue;
+    background-color: brown;
+    /* height: 100px;
+    width: 100px; */
+}
+p{
+    color:red;
 }

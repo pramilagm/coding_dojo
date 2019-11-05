@@ -1,0 +1,23 @@
+p{
+    color: blue;
+}
+.gold_section{
+    display: inline-block;
+    height: 160px;
+    width: 220px;
+    margin: 15px;
+    text-align: center;
+    padding-top: 15px;
+    background-color:#76D48F;
+    border-radius: 8px;
+}
+.container{
+    margin-top: 30px;
+}
+.activities{
+    min-height: 150px;
+    width: 980px;
+    margin-left: 18px;
+    border-radius:8px;
+    background-color:#49B6AA;
+}

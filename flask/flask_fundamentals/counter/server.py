@@ -5,24 +5,21 @@ app.secret_key = 'keep it secret, keep it safe'
 
 @app.route('/')
 def index():
-    session["count"] += 1
-    
-    return render_template('index.html', count = session['count'])
-
-@app.route('/add', methods=['POST'])
-def add():
     if 'count' in session:
         session['count'] += 1
     else:
-        session['count'] =1
-    return redirect ('/')
+        session['count'] = 1
+    return render_template('index.html', count = session['count'])
 
-@app.route('/reset',methods =['POST'])
+@app.route('/add')
+def add():
+    session['count'] += 1
+    return redirect("/")
+
+@app.route('/reset')
 def reset():
-    session.clear()
+    session.pop('count',None)
     return redirect('/')
-
-
 
 
 if __name__ =='__main__':

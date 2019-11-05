@@ -13,12 +13,15 @@
             <div class="jumbotron">
                 <div class="text-center mb-4">
                     <h1>Counter</h1>
-                    <h2> {{Count}} times</h2>
-                    <form action="/add",method ='post' >
-                        <button type="submit" class="btn btn-danger btn-lg" value="add" >Add two visits</button></form>
-                    <form action="/reset",method ='post'>  
-                        <button type="submit" class="btn btn-success btn-lg" value="reset">Reset</button>
+                    <h2> {{session['count']}} times</h2>
+                    <!-- <form action="/add", method ='post'>
+                        <button type="submit" class="btn btn-danger btn-lg">Add two visits</button>
                     </form>
+                    <form action="/reset", method ='post'>  
+                        <button type="submit" class="btn btn-success btn-lg">Reset</button>
+                    </form> -->
+                    <a type="button" class="btn btn-success" href="/add">Add 2</a>
+                    <a type="button" class="btn btn-success" href="/reset">RESET</a>
                 </div>
             </div>
         </div>
