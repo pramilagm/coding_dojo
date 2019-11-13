@@ -1,0 +1,12 @@
+.register,.login{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+
+}
+.register{
+    width: 450px;
+}
+h2{
+    margin-bottom: 28px;
+}
