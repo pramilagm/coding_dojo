@@ -1,0 +1,67 @@
+ favbooks= Book.objects.create(title ="candyland", desc ="lkkfkdd djdj") # to creat the BOOk
+ authors =Author.objects.create(first_name = "Lau",last_name = "Tzu") #to create the author
+
+from models.books_authors_apps.models import *
+Book.objects.filter(title ="The flowers")
+
+Book.objects.filter(authors__name="The Flowes")
+new_book = Book.objects.get(title ="The flowers") #change the name of Book
+new_book.title ="C#"
+ new_book.save()
+
+new_author = Author.objects.get(id = 4) #change the first name of the 4th author to Bill
+new_author.first_name ="BIll"
+new_author.save()
+
+book1 = Book.objects.get(id=1) # Assign the first author to the first 2 books
+book2 = Book.objects.get(id=2)
+author = Author.objects.get(id=1)
+author.Books.add(book1)
+author.Books.add(book1)
+
+book1 = Book.objects.get(id=1) #Assign the second author to the first 3 books
+book2 = Book.objects.get(id=2)
+book3 = Book.objects.get(id=3)
+author1 = Author.objects.get(id=2)
+author1.Books.add(book1)
+author1.Books.add(book2)
+author1.Books.add(book3)
+
+book1 = Book.objects.get(id=1) #Assign the third author to the first 4 books
+book2 = Book.objects.get(id=2)
+book3 = Book.objects.get(id=3)
+book4 = Book.objects.get(id=4)
+author3= Author.objects.get(id=3)
+author3.Books.add(book1)
+author3.Books.add(book2)
+author3.Books.add(book3)
+author3.Books.add(book4)
+
+book1 = Book.objects.get(id=1) #Assign the fourth author to the first 5 books
+book2 = Book.objects.get(id=2)
+book3 = Book.objects.get(id=3)
+book4 = Book.objects.get(id=4)
+book5 = Book.objects.get(id=5)
+author4 =Author.objects.get(id=4)
+author4.Books.add(book1)
+author4.Books.add(book2)
+author4.Books.add(book3)
+author4.Books.add(book4)
+author4.Books.add(book5)
+
+
+ book3.author.all().values() ##Too retrieve all the author  for the third book
+
+book3 = Book.objects.get(id=3) #To remove the first author of the 3rd book
+author1=Book.objects.get(id=1)
+delete_to_be = book3.author.remove(author1)
+
+author5 = Author.objects.get(id=5) # Add the 5th author as one of the authors of the 2nd book
+book2 = Book.objects.get(id=2)
+book2.author.add(author5)
+
+author3.Books.all() #find all the books that the 3rd author is part of
+
+Book5.author.all() ###all the authors that contributed to the 5th book
+
+

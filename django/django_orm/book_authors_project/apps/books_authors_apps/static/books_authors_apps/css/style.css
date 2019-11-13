@@ -1,0 +1,23 @@
+.table-nonfluid {
+    width: auto !important;
+ }
+ table{
+    
+    margin-right:300px;
+    margin-top: 70px;
+ }
+ 
+ .contain{
+    width: 500px;
+    margin-left: 60px;
+    vertical-align: top;
+    margin-top: 60px;
+   
+     
+ }
+ table,.contain{
+     display: inline-block;
+ }
+ textarea{
+     margin-left: 80px;
+ }

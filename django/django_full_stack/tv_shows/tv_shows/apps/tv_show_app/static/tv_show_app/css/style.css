@@ -1,0 +1,25 @@
+
+p{
+    padding-top: 10px;
+}
+.row{
+    margin-left: 3px;
+}
+.col-lg-4{
+    display: inline-block;
+}
+h3{
+    display: inline-block;
+    margin-left: 14px;
+}
+.go_back{
+    float: right;
+}
+.create{
+    margin-left: 321px;
+    margin-top: 15px;
+    padding: 5px;
+}
+.container{
+    margin-top: 20px;
+}

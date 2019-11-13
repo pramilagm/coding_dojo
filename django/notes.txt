@@ -1,0 +1,26 @@
+ #bootstrap link
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ #For css link in django
+{% load static %}
+<link rel="stylesheet" href="{% static 'app_name/css/style.css' %}"> 
+#urls.py inside app
+
+from django.conf.urls import url
+from . import views	
+#import models in views
+from django.db import models
+                    
+urlpatterns = [
+    url(r'^$', views.index),
+]
+# redirect the user back to the form to fix the errors
+
+from django.contrib import messages
+
+errors = Blog.objects.basic_validator(request.POST)
+if len(errors) > 0:
+        # if the errors dictionary contains anything, loop through each key-value pair and make a flash message
+        for key, value in errors.items():
+            messages.error(request, value)
+        
+        return redirect(

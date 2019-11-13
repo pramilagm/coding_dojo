@@ -1,0 +1,16 @@
+python manage.py shell #to run the shell
+from apps.users_app.models import * #Importing
+ Users.objects.create(first_name ="kalap",last_name ="samra",email ="jdjk",age =36)##create a users 
+Users.objects.all() #to retrieve all the users informations
+Users.objects.filter(last_name ="gharti") #to retrieve the last_name
+Users.objects.get(id=3) ####to get the last user 
+
+>>> newfield = Users.objects.get(id=3)  ##to update the last_name to pancake 
+>>> newfield.last_name = "Pancakes"
+>>> newfield.save()
+
+ delet = Users.objects.get(id=2) # to delete the user with id = 2
+>>> delet.delete()
+ 
+Users.objects.all().order_by("first_name") - orders by field provided, ascending
+Users.objects.all().order_by("-first_name") - orders by field provided, descending

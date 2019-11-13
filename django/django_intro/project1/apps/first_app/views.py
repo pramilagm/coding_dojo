@@ -1,8 +1,13 @@
 from django.shortcuts import render, HttpResponse,redirect
 
 def index(request):
-
-    return HttpResponse("hello Programmer Have Fun")
+    context = {
+    	"name": "Noelle",
+    	"favorite_color": "turquoise",
+    	"pets": ["Bruce", "Fitz", "Georgie"]
+    }
+    return render(request,"first_app/index.html",context)
+    
 def new(request):
     return HttpResponse('This the the new blog ')
 

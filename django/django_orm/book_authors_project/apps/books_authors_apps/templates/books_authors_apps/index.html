@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'books_authors_apps/css/style.css' %}"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="contain">
+            <h3>Add a Book</h3>
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <div>Title: <input type="text"  name="title" ></div>
+                <p>Description: </p>
+                <textarea cols="30" rows="6" name="desc"></textarea>
+                <input type="submit" value="Add">
+                <p><a href="/authors" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">click Here for authors..</a></p>
+            </form>
+        </div>
+
+        <table class="table table-nonfluid ">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books%}
+                        <tr>
+                            <td>{{book.id}}</td>
+                            <td>{{book.title}}</td>
+                            <td><a href="/books/{{book.id}}">view</a></td>
+                            <td><a href="/delete/{{book.id}}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+    </body>
+</html>

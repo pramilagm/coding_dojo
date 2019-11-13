@@ -1,0 +1,14 @@
+ Dojos.objects.create(name ="lambda",city ="new york",state ="new york") #  to create the Dojos
+del = Dojos.objects.get(id = 3) #to delete the Dojo 
+del.delete()
+new_ninja = Ninjas.objects.create(first_name ="ifren", last_name ="ren",dojo = Dojos.objects.get(id=1)) #Create 3ninjas that belong to the first dojo
+new_ninja = Ninjas.objects.create(first_name ="ifren", last_name ="ren",dojo = Dojos.objects.get(id=2)) #Create 3ninjas that belong to the second dojo
+new_ninja = Ninjas.objects.create(first_name ="ifren", last_name ="ren",dojo = Dojos.objects.get(id=3)) #Create 3ninjas that belong to the third dojo
+
+ ninjas = Ninjas.objects.filter(dojo = Dojos.objects.get(id=1)) #To retrieve all the ninjas from the first dojo
+ ninjas = Ninjas.objects.filter(dojo = Dojos.objects.get(id=3))  #To retrieve all the ninjas from the last dojo
+
+
+
+  desc = models.TextField(default = "this is the description")  Updation in classs
+  Dojos.objects.create(name ="dd",city ="San Hose", state ="ca", desc = "This is the new branch") To creation

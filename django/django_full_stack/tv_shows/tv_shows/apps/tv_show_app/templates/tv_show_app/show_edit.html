@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Show Information</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'tv_show_app/css/style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    </head>
+    <body>
+            <div class="container">
+                    <div class="jumbotron">
+                        <h3>Edit show {{show.id}} </h3>
+                        <a href="/shows" class="go_back">Go Back</a>
+                        {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %}    
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <form action="/shows/{{show.id}}/update" method="POST">
+                            {% csrf_token%}
+                            <div class="col-lg-8">
+                                <p>Title</p>
+                                <input type="text" class="form-control" name ="title" placeholder="{{show.title}}">
+                            </div>
+                            <div class="contain">
+                                <div class="col-lg-4">
+                                    <p>Network</p>
+                                    <input type="text" class="form-control" name="network" placeholder="{{show.network}}">
+                                </div>
+                                <div class="col-lg-4">
+                                    <p>Release Date</p>
+                                    <input type="text" class="form-control" name="release_date" placeholder="{{show.release_date}}">
+                                </div>
+        
+                            </div>
+                            <div class="col-lg-6">
+                                <p>Description </p>
+                                <textarea name="desc" id="" cols="93" rows="5" placeholder="{{show.desc}}"></textarea>
+                                
+                            </div>
+                        
+                            <input type="submit" value=" Update " class="create">
+                        </form>
+                        
+        
+                      
+                        
+        
+                    </div>
+        
+                </div>
+        
+    </body>
+</html>

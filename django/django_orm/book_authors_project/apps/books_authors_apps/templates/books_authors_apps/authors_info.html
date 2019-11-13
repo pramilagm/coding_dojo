@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Author Information</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_apps/css/style.css' %}"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h3>{{author_in.first_name }} {{author_in.last_name}}</h3>
+        <p>ID :{{author_in.id}}</p>
+        <p>Note  : {{author_in.note}} </p>
+        <p>Books</p>
+        <ul>
+
+            {% for book in author_in.Books.all %}
+                <li>{{book.title}}</li>
+            {% endfor %}
+        </ul>
+        <form  method="POST">
+            {% csrf_token %}
+
+            <div class="dropdown">
+                <select name="book_id">
+                    {% for book in book_infos %}
+                        {% if book not in author_in.Books.all %}
+                            <option value="{{book.id }}">{{book.title}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+                    
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

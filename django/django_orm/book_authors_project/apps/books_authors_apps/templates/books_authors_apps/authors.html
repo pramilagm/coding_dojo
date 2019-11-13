@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Author</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'books_authors_apps/css/style.css' %}"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="contain">
+            <h3>Add an author</h3>
+    
+            <form action="/authors" method="POST">
+                {% csrf_token %}
+                <p>First_name : <input type="text" name="first_name"> </p>
+                <p>Last_name : <input type="text" name="last_name"></p>
+                <div class="form-group purple-border sm-form">
+                    <label for="exampleFormControlTextarea4">Notes</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea4" rows="3" cols="6"></textarea>
+                </div>
+                <input type="submit" value="Add">
+                <p></p>
+                <p><a href="/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Get Back</a></p>
+
+                
+            </form>
+
+        </div>
+
+
+            <table class="table table-nonfluid ">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                        <tr>
+                            <td>{{author.id}}</td>
+                            <td>{{author.first_name }}{{author.last_name}}</td>
+                            <td><a href="/author/{{author.id}}">view</a></td>
+                            <td><a href="/author_delete/{{author.id}}">Delete</a></td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+    </body>
+</html>

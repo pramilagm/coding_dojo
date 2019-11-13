@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random_strings</title>
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'random_app/css/style.css' %}"> 
+</head>
+<body>
+    <div class="container">
+        <p>Random WOrd (Attempt {{request.session.counter}})</p>
+        <div class="box" >
+            <h3>{{request.session.random}}</h3>
+
+        </div>
+        <!-- <button type="button" href ="/submit">Generate</button> -->
+        <form action="/random/submit">
+            <input type="submit" value="Generate">
+        </form>
+        <form action="/random/reset">
+            <input type="submit" value="Reset">
+
+        </form>
+            
+    </div>
+    
+    
+</body>
+</html>
