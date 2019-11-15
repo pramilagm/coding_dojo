@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Wall</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'wall_app/css/style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+                <nav>
+                    <h4>The coding dojo Wall</h4>
+                    <div class="right-nav"><h5>welcom {{user.first_name  }}</h5><a href="/wall/logout">Logout</a></nav>
+                </nav>
+
+            <p class="p_btm">Post a Message</p>
+            <form action="/wall/messages" method="POST">
+                {% csrf_token %}
+                <textarea name="message" id="" cols="140" rows="4">
+
+                </textarea>
+                <input type="submit" value="Post a Message" class="submit">
+            </form>
+            <hr>
+            {% for msg in all_msg reversed %}
+            <p>Written by: {{msg.user.first_name}} {{msg.user.last_name }}-{{ msg.updated_at}}</p>
+            <p>{{msg.message}}</p>
+            {% if msg.user.id == request.session.id %}
+                <form action="/wall/delete" method="POST" class="delete">
+                    {% csrf_token %}
+                    <input type="hidden" name="msg_id" value="{{msg.id}}">
+                    <input type="submit" value="Delete the Message">
+                </form>
+            {% endif %}
+
+                <div class="comments">
+
+                    {% for comment in msg.user_comments.all %}
+                        <h5>{{comment.user.first_name}}{{comment.user.last_name}}-{{comment.updated_at}}</h5>
+
+                        <p>{{comment.comments}}</p>
+                    {% endfor %}
+                    
+               
+                    <form action="/wall/comments" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{msg.id}}">
+                        <textarea name="comment" id="" cols="140" rows="3">
+        
+                        </textarea>
+                        <input type="submit" value="Post a Comment" class="submit">
+                    </form>
+                </div>
+                   
+                    <hr>
+            {% endfor %}
+
+            
+        </div>
+        
+    </body>
+</html>

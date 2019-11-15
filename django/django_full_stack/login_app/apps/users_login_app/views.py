@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Form
+from apps.users_login_app.models import Form
 import bcrypt
 
 
@@ -23,12 +23,12 @@ def register_form(request):
     else:
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        # birthday = request.POST['birthday']
+        birthday = request.POST['birthday']
         email = request.POST['email']
         password = request.POST['password']
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
         cnpassword = request.POST['cnpassword']
-        Form.objects.create(first_name=first_name,last_name=last_name,email=email,password=pw_hash)
+        Form.objects.create(first_name=first_name,last_name=last_name,email=email,password=pw_hash,birthday=birthday)
         return redirect('/')
 
 def login(request):
@@ -38,10 +38,11 @@ def login(request):
         if bcrypt.checkpw(request.POST['password'].encode(), logged_email.password.encode()):
             request.session['id'] = logged_email.id
             return redirect('/success')
-    return redirect("/")
+        else:
+            messages.error(request, 'The password is invalid!')
+            return redirect("/")
+
 def success(request):
-    
-   
     if 'id' not in request.session:
         return render(request,'users_login_app/message.html')
 
@@ -50,7 +51,7 @@ def success(request):
         context = {
             'user':Form.objects.get(id=id)
         }
-        return render(request,'users_login_app/success_user.html',context)
+        return redirect('/wall')
   
 
     

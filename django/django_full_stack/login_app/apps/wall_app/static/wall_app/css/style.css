@@ -1,0 +1,30 @@
+
+.container{
+    margin-top: 25px;
+   
+
+}
+h4,h5,.right-nav{
+    display: inline-block;
+}
+.right-nav{
+    margin-left: 578px;
+}
+nav{
+    border-bottom: 2px solid black;
+}
+.p_btm{
+    margin-top: 8px;
+    margin-bottom: 0rem;
+}
+.submit{
+    float:right;
+    margin-right: 102px;
+}
+.comments{
+    margin-left: 18px;
+}
+.delete{
+    margin-top: 12px;
+    margin-bottom: 15px;
+}
