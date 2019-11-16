@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Books</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'favorite_books_app/css/style.css' %}">
+    </head>
+    <body>
+        <nav>
+            <h4 class="wlc">Welcome {{user.first_name}}</h4><a href="/books/logout" class="logout">Logout</a>
+        </nav>
+        <div class="forms">
+            <p>Add a Book</p>
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="/books/add" method="POST">
+                {% csrf_token %}
+                <p>  Title        : <input type="text" name="title"></p>
+                <p>  desccription : <textarea name="desc" id="" cols="40" rows="5"></textarea></p>
+                <p><input type="submit" value="Add"></p>
+            
+            </form>
+           <a href="/books/display">click Here to see Your favorite Books</a>
+        </div>
+        <div class="book_info">
+            <h3>All Books</h3>
+            {{user.first_name}}
+            {% for book in books %}
+                <a href="/books/show/{{book.id}}">{{book.title}}</a>
+                <p>Updated by {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                {% if user  in  book.users_who_like.all %}
+                    <p>this is one of your favorites</p>
+                {% else %}
+                    <p><a href="/books/add_favorite/{{book.id}}">Add to favorites</a></p>
+                {% endif %}
+            {% endfor %}
+
+
+        </div>
+
+        
+    </body>
+</html>

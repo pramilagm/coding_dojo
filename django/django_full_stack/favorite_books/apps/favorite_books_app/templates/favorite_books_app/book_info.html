@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Registration and Login Form</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'favorite_books_app/css/style.css' %}"> 
+    </head>
+    <body>
+        <div class="container">
+           
+            <nav>
+                <h4 class="wlc">Welcome {{user.first_name }} {{ user.last_name }}</h4><a href="/books/logout" class="logout">Logout</a>
+            </nav>
+            <div class="book-info">
+                <h4>{{books.title}}</h4>
+                <h6>Added By {{books.uploaded_by.first_name }} {{books.uploaded_by.last_name }}</h6>
+                <p>Added on {{books.created_at}}</p>
+                <p>Added on {{books.updated_at}}</p>
+                <form action="/books/show/{{books.id}}/edit" method="POST">
+                    {% csrf_token %}
+
+                    {% if books.uploaded_by.id == request.session.userid %}
+                    Description : <br><textarea name="desc" id="" cols="40" rows="4"></textarea>
+                    <br><button type="submit" class="btn btn-primary"> Update </button>
+                    <a href="/books/show/{{books.id}}/delete">delete</a>
+                    
+                    {% else %}
+                    Description :{{books.desc}}
+                    {% endif %}
+                </form>
+                <br>
+                <a href="/books">Go back</a>
+               
+
+            </div>
+            <div class="side-info">
+               
+                <h5>Users who liked this Book</h5>
+                {% for user_info in  books.users_who_like.all %}
+                <ul>
+               
+                    <li>{{user_info.first_name }}{{user_info.last_name}}</li>
+                    {% if user_info.id == request.session.userid %}
+                        <a href="/books/show/{{books.id}}/unfavorite">Unfavorite</a>
+                    {%  endif %}
+                </ul>
+                {% endfor %}
+               
+
+                {% if request.session.userid  not in books.users_who_like.all %}
+                <a href='/books/show/{{books.id}}/favorite'>Add to favorite</a>
+                
+                {% endif %}
+
+
+               
+            </div>
+            
+
+
+        </div>
+        
+    </body>
+</html>

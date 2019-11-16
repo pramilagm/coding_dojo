@@ -1,0 +1,35 @@
+.register,.login,h2,.wlc,.side-info{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+
+}
+.register{
+    width: 450px;
+}
+
+.logout{
+    margin-left: 760px;
+}
+nav{
+    margin-left: 55px;
+    width: 800px;
+    border-bottom: 1px solid black;
+}
+.forms{
+    width: 400px;
+    display: inline-block;
+    margin-left: 55px;
+}
+.book_info{
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+}
+.book-info{
+    display: inline-block;
+    width: 400px;
+}
+.side-info{
+    margin-left: 200px;
+}
